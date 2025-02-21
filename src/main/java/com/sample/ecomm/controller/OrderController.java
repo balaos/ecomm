@@ -5,6 +5,8 @@ import com.sample.ecomm.model.Product;
 import com.sample.ecomm.request.CreateOrderRequest;
 import com.sample.ecomm.service.OrderService;
 import com.sample.ecomm.service.ProductService;
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Timed(value = "ecomm.order.list.process.time", description = "Time taken to process request")
     @GetMapping("/list")
     @Operation(summary = "Get Order List", description = "Order List of all orders")
     public ResponseEntity<List<Order>> getOrderList() {
@@ -34,6 +37,7 @@ public class OrderController {
         return ResponseEntity.ok().body(orderService.createOrder(createOrderRequest));
     }
 
+    @Counted(value = "ecomm.order.request.count", description = "Number of requests processed")
     @GetMapping("/{orderId}")
     @Operation(summary = "Get Order", description = "Get order for the given order id")
     public ResponseEntity<Order> getOrder(@PathVariable Long orderId) {
