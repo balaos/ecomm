@@ -1,0 +1,4 @@
+Hi this is the sameple file
+it contains many lines
+in that i am writing a program to search a line
+all is well
