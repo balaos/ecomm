@@ -1,4 +1,4 @@
-package com.sample.ecomm.thread;
+package com.sample.ecomm.others.thread;
 
 public class ThreadDeadlock {
 
