@@ -6,9 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.stereotype.Component;
 
-@Component
-@Validated
-@ConfigurationProperties(prefix = "app")
+//@Component
+//@Validated
+//@ConfigurationProperties(prefix = "app")
 public class ValidatedConfig {
 
     @NotBlank

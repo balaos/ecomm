@@ -9,6 +9,7 @@ public class SortHashMapByValue {
         map.put(3, "Apple");
         map.put(1, "Orange");
         map.put(2, "Banana");
+        map.put(4, "Banana");
 
         // Convert HashMap to List and sort by value
         LinkedHashMap<Integer, String> sortedMap = map.entrySet()

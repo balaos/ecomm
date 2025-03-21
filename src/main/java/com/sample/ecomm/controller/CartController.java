@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/cart")
-@Tag(name = "Cart Controller" , description = "Cart Controller")
+//@Tag(name = "Cart Controller" , description = "Cart Controller")
 public class CartController {
 
     @Autowired
     private RedisRepo redisRepo;
 
     @PostMapping("/add")
-    @Operation(summary = "Cart Order", description = "Create new order")
+    //@Operation(summary = "Cart Order", description = "Create new order")
     public ResponseEntity<String> addToCart(@RequestBody Cart cart) {
         redisRepo.save(cart);
         return ResponseEntity.ok().body("Success");

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/custombackend.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>log/backup/custombackend-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{dd-MM-yyyy MM:mm:ss.SSS} [%thread] %-5level %logger{36} %M %X{CorrelationId} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender" additivity="false">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy MM:mm:ss.SSS} [%thread] %-5level %logger{36} %M %X{CorrelationId} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.veolia.custombackend" level="INFO" additivity="false">
+        <appender-ref ref="ROLLING"/>
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="ROLLING"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
+
+TRACEE<DEBUG <INFO<WARN  <ERROR<FATAL
